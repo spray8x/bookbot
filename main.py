@@ -1,4 +1,4 @@
-from stats import get_num_words
+from stats import *
 
 def get_book_text(bookname):
     with open("books/"+bookname+".txt") as f:
@@ -8,6 +8,13 @@ def get_book_text(bookname):
     return file_contents
 
 def main():
-    print(get_num_words(get_book_text("frankenstein")), "words found in the document")
+    l = create_dict_list(get_num_char(get_book_text("frankenstein")))
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print("Found", get_num_words(get_book_text("frankenstein")), "total words")
+    print("--------- Character Count -------")
+    for d in l:
+        print(d["char"]+":", d["num"])
     
 main()
